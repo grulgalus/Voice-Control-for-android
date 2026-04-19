@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.21)
 
-# VYPNUTÍ TOHO BUGU - tohle řekne kompilátoru, ať nepoužívá ten padající macro
-add_compile_definitions(FMT_CONSTEVAL=)
-
-set(CMAKE_CXX_STANDARD 20) # Změněno z 23 na 20, Clang 20+ to lépe zvládá
+# Ponecháme C++23 (Geode ho k životu na Androidu nutně potřebuje)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# TADY JE TEN TRIK PRO C++23 NA CLANGU 21: Vypneme všechny consteval errory ve fmt
+add_compile_definitions(FMT_CONSTEVAL=)
+add_compile_definitions(FMT_USE_CONSTEVAL=0)
 
 if ("${CMAKE_SYSTEM_NAME}" STREQUAL "iOS" OR IOS)
     set(CMAKE_OSX_ARCHITECTURES "arm64")
