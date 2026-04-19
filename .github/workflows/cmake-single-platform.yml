@@ -24,18 +24,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # TENTO KROK nainstaluje Ninju, který ti v logu chyběl
-      - name: Install Ninja
-        run: sudo apt-get install ninja-build
-
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          bindings: geode-sdk/bindings
-          bindings-ref: main
           target: ${{ matrix.config.target }}
-          # Smazal jsem tu pevnou verzi NDK, která neexistovala. 
-          # Action si teď najde výchozí Android NDK v systému sama.
 
   package:
     name: Package Geode Mod
@@ -48,6 +40,4 @@ jobs:
       - name: Combine build artifacts
         uses: geode-sdk/build-geode-mod@main
         with:
-          bindings: geode-sdk/bindings
-          bindings-ref: main
           combine: true
