@@ -1,0 +1,27 @@
+name: Voice Control For Android
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build for Android
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [android32, android64]
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build the mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          bindings: geode-sdk/bindings
+          bindings-ref: main
+          combine: true
+          target: ${{ matrix.target }}
