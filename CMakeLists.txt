@@ -1,4 +1,8 @@
 cmake_minimum_required(VERSION 3.21)
+
+add_compile_definitions(FMT_CONSTEVAL=)
+add_compile_definitions(FMT_USE_CONSTEVAL=0)
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
