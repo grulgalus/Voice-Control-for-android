@@ -1,4 +1,4 @@
-name: Voice Control for Android
+name: Build Geode Mod
 
 on:
   push:
@@ -13,10 +13,10 @@ jobs:
         config:
           - name: Android 32-bit
             os: ubuntu-latest
-            target: android32
+            target: Android32
           - name: Android 64-bit
             os: ubuntu-latest
-            target: android64
+            target: Android64
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
