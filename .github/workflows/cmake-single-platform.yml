@@ -30,6 +30,7 @@ jobs:
           bindings: geode-sdk/bindings
           bindings-ref: main
           target: ${{ matrix.config.target }}
+          android-ndk-version: '25.2.9519653' # TOTO OPRAVUJE CLANG CHYBY!
 
   package:
     name: Package Geode Mod
