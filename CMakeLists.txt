@@ -1,19 +1,13 @@
-cmake_minimum_required(VERSION 3.21)
-
-add_compile_definitions(FMT_CONSTEVAL=)
-add_compile_definitions(FMT_USE_CONSTEVAL=0)
-
-set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+cmake_minimum_required(VERSION 3.20)
 
 project(voice_control_for_android VERSION 1.0.0)
 
+# Geode SDK (žádné add_subdirectory hacky)
+find_package(Geode REQUIRED)
+
+# Připojení tvého kódu
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-if (NOT DEFINED ENV{GEODE_SDK})
-    message(FATAL_ERROR "Unable to find Geode SDK!")
-endif()
-
-add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
+# Kouzlo, co to celé spojí
 setup_geode_mod(${PROJECT_NAME})
