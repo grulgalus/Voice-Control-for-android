@@ -1,0 +1,10 @@
+{
+    "geode": "3.3.0",
+    "gd": "2.2081",
+    "id": "voice_control_for_android.demon1125",
+    "name": "Voice Control For Android",
+    "version": "v1.0.0",
+    "developer": "demon1125",
+    "description": "Jump whit your mic on android!",
+    "early-load": false
+}
