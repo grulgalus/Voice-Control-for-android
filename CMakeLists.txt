@@ -2,8 +2,13 @@ cmake_minimum_required(VERSION 3.20)
 
 project(voice_control_for_android)
 
-# ZDE JE TA ZMĚNA: HINTS $ENV{GEODE_SDK} řekne kompilátoru, kde přesně SDK leží
-find_package(Geode REQUIRED HINTS $ENV{GEODE_SDK})
+# TOTO JE TEN TRIK: Vnutí kompilátoru, aby Geode SDK hledal tam, kam ho GitHub Action stáhl
+if(DEFINED ENV{GEODE_SDK})
+    list(APPEND CMAKE_PREFIX_PATH "$ENV{GEODE_SDK}")
+endif()
+
+# Teď už to na 100 % najde
+find_package(Geode REQUIRED)
 
 # Přidá tvůj hlavní C++ kód
 add_library(${PROJECT_NAME} SHARED
