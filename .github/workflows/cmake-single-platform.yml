@@ -12,10 +12,10 @@ jobs:
       matrix:
         config:
           - name: Android 32-bit
-            os: ubuntu-latest
+            os: ubuntu-22.04       # ZMĚNA ZDE
             target: Android32
           - name: Android 64-bit
-            os: ubuntu-latest
+            os: ubuntu-22.04       # ZMĚNA ZDE
             target: Android64
 
     name: ${{ matrix.config.name }}
@@ -31,7 +31,7 @@ jobs:
 
   package:
     name: Package Geode Mod
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04         # ZMĚNA ZDE
     needs: build
 
     steps:
